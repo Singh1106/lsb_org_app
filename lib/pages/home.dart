@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:lsb_organization/pages/login.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: const Text('Home'),
         backgroundColor: Colors.purple[100],
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               // Navigate back to the login page
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LoginPage(),
+                  builder: (context) => const LoginPage(),
                 ),
               );
             },
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               child: Column(children: [
                 Icon(Icons.favorite),
                 Text(
@@ -40,16 +42,19 @@ class HomePage extends StatelessWidget {
               ]),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
               onTap: () {
+                Navigator.pushNamed(context, '/home');
+
                 // Add functionality here
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
               onTap: () {
+                Navigator.pushNamed(context, '/settings');
                 // Add functionality here
               },
             ),
@@ -66,7 +71,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 // Add functionality here
               },
-              child: Row(
+              child: const Row(
                 children: [Icon(Icons.home), Text('Home')],
               ),
             ),
@@ -74,7 +79,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 // Add functionality here
               },
-              child: Row(
+              child: const Row(
                 children: [Icon(Icons.settings), Text('Settings')],
               ),
             ),
@@ -82,7 +87,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 // Add functionality here
               },
-              child: Row(
+              child: const Row(
                 children: [Icon(Icons.account_box), Text('Profile')],
               ),
             ),
@@ -91,7 +96,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.purple[50],
-        child: Center(
+        child: const Center(
           child: Text('Home Page'),
         ),
       ),

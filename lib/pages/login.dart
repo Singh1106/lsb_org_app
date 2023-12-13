@@ -1,7 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:lsb_organization/pages/otp.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,10 +17,10 @@ class LoginPage extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Login'),
+          title: const Text('LSB Portal'),
           backgroundColor: Colors.purple[100],
         ),
-        body: Padding(
+        body: const Padding(
           padding: EdgeInsets.all(16.0),
           child: LoginFormImplementation(),
         ),
@@ -26,6 +30,8 @@ class LoginPage extends StatelessWidget {
 }
 
 class LoginFormImplementation extends StatefulWidget {
+  const LoginFormImplementation({super.key});
+
   @override
   _LoginFormState createState() => _LoginFormState();
 }
@@ -85,18 +91,18 @@ class _LoginFormState extends State<LoginFormImplementation> {
                 child: Text(code),
               );
             }).toList(),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Country Code',
               border: OutlineInputBorder(),
               filled: true,
               fillColor: Colors.white,
             ),
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           TextFormField(
             controller: phoneNumberController,
             keyboardType: TextInputType.phone,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Phone Number',
               border: OutlineInputBorder(),
               filled: true,
@@ -104,11 +110,11 @@ class _LoginFormState extends State<LoginFormImplementation> {
             ),
             validator: validatePhoneNumber,
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.purple,
-              onPrimary: Colors.white,
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.purple,
             ),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
@@ -116,12 +122,12 @@ class _LoginFormState extends State<LoginFormImplementation> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => OtpPage(),
+                    builder: (context) => const OtpPage(),
                   ),
                 );
               }
             },
-            child: Text('Send OTP'),
+            child: const Text('Send OTP'),
           ),
         ],
       ),

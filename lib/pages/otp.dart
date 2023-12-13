@@ -1,7 +1,11 @@
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:lsb_organization/pages/home.dart';
 
 class OtpPage extends StatefulWidget {
+  const OtpPage({super.key});
+
   @override
   _OtpPageState createState() => _OtpPageState();
 }
@@ -17,7 +21,7 @@ class _OtpPageState extends State<OtpPage> {
     });
 
     // Simulating OTP verification delay
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
 
     setState(() {
       isVerifying = false;
@@ -36,11 +40,11 @@ class _OtpPageState extends State<OtpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Enter OTP'),
+        title: const Text('Enter OTP'),
         backgroundColor: Colors.purple[100],
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -51,7 +55,7 @@ class _OtpPageState extends State<OtpPage> {
                 controller: otpController,
                 keyboardType: TextInputType.number,
                 maxLength: 6,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'OTP',
                   border: OutlineInputBorder(),
                   filled: true,
@@ -64,11 +68,11 @@ class _OtpPageState extends State<OtpPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 24.0),
+              const SizedBox(height: 24.0),
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.purple,
-                  onPrimary: Colors.white,
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.purple,
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -76,15 +80,17 @@ class _OtpPageState extends State<OtpPage> {
                   }
                 },
                 icon: isVerifying
-                    ? SizedBox(
+                    ? const SizedBox(
                         width: 20,
                         height: 20,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
                         ),
                       )
-                    : Icon(Icons.send),
-                label: isVerifying ? Text('Verifying') : Text('Submit'),
+                    : const Icon(Icons.send),
+                label: isVerifying
+                    ? const Text('Verifying')
+                    : const Text('Submit'),
               ),
             ],
           ),
