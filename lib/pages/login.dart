@@ -8,22 +8,14 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.purple,
-        hintColor: Colors.purpleAccent,
-        fontFamily: 'Roboto',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('LSB Portal'),
+        backgroundColor: Colors.purple[100],
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('LSB Portal'),
-          backgroundColor: Colors.purple[100],
-        ),
-        body: const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: LoginFormImplementation(),
-        ),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: LoginFormImplementation(),
       ),
     );
   }

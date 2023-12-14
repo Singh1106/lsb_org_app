@@ -5,13 +5,11 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(title: Text("Profile page")),
-          body: Column(
-            children: [Icon(Icons.account_box)],
-          ),
-        ));
+    return Scaffold(
+      appBar: AppBar(title: const Text("Profile page")),
+      body: const Column(
+        children: [Icon(Icons.account_box)],
+      ),
+    );
   }
 }

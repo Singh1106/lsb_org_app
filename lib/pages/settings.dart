@@ -5,13 +5,14 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          appBar: AppBar(title: Text("Settings page")),
-          body: Column(
-            children: [Icon(Icons.settings)],
-          ),
-        ));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Settings page"),
+        backgroundColor: Colors.purple[100],
+      ),
+      body: const Column(
+        children: [Icon(Icons.settings)],
+      ),
+    );
   }
 }

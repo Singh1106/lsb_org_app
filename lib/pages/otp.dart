@@ -31,7 +31,7 @@ class _OtpPageState extends State<OtpPage> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => HomePage(),
+        builder: (context) => const HomePage(),
       ),
     );
   }

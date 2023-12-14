@@ -16,11 +16,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.purple,
+          hintColor: Colors.purpleAccent,
+          fontFamily: 'Roboto',
+        ),
         home: const LoginPage(),
         routes: {
           '/otp': (context) => const OtpPage(),
-          '/home': (context) => const HomePage(),
-          '/settings': (context) => const SettingsPage(),
+          '/home': (context) => HomePage(),
+          '/settings': (context) => SettingsPage(),
           '/profile': (context) => const ProfilePage()
         });
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lsb_organization/pages/login.dart';
+import 'package:lsb_organization/pages/settings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -45,8 +46,8 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.home),
               title: const Text('Home'),
               onTap: () {
-                Navigator.pushNamed(context, '/home');
-
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
                 // Add functionality here
               },
             ),
@@ -54,8 +55,11 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {
-                Navigator.pushNamed(context, '/settings');
+                // Navigator.pushNamed(context,
+                //     '/settings'); // Somehow this is not working even though the routes are defined in the main
                 // Add functionality here
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()));
               },
             ),
           ],
