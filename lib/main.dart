@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         home: const LoginPage(),
         routes: {
           '/otp': (context) => const OtpPage(),
-          '/home': (context) => HomePage(),
-          '/settings': (context) => SettingsPage(),
+          '/home': (context) => const HomePage(),
+          '/settings': (context) => const SettingsPage(),
           '/profile': (context) => const ProfilePage()
         });
   }

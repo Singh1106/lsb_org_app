@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
               title: const Text('Home'),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                    MaterialPageRoute(builder: (context) => const HomePage()));
                 // Add functionality here
               },
             ),
@@ -58,8 +58,10 @@ class HomePage extends StatelessWidget {
                 // Navigator.pushNamed(context,
                 //     '/settings'); // Somehow this is not working even though the routes are defined in the main
                 // Add functionality here
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsPage()));
               },
             ),
           ],
