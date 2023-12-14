@@ -5,9 +5,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Profile page")),
-      body: const Column(
+    return const Scaffold(
+      body: Column(
         children: [Icon(Icons.account_box)],
       ),
     );

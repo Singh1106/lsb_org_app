@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const HomePage(),
           '/settings': (context) => const SettingsPage(),
           '/profile': (context) => const ProfilePage()
+          // dk why this no work
         });
   }
 }

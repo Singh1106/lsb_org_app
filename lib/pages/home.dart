@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:lsb_organization/pages/login.dart';
+import 'package:lsb_organization/pages/profile.dart';
 import 'package:lsb_organization/pages/settings.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  final _pages = [const SettingsPage(), const ProfilePage()];
+
+  void _navigate_bottom_bar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('LSB Org'),
         backgroundColor: Colors.purple[100],
         actions: [
           IconButton(
@@ -43,11 +58,15 @@ class HomePage extends StatelessWidget {
               ]),
             ),
             ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
+              leading: const Icon(Icons.account_box),
+              title: const Text('Profile'),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const HomePage()));
+                Navigator.pop(context);
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfilePage()));
                 // Add functionality here
               },
             ),
@@ -58,6 +77,7 @@ class HomePage extends StatelessWidget {
                 // Navigator.pushNamed(context,
                 //     '/settings'); // Somehow this is not working even though the routes are defined in the main
                 // Add functionality here
+                Navigator.pop(context);
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -67,45 +87,18 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomSheet: Container(
-        height: 100,
-        color: Colors.purple[100],
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality here
-              },
-              child: const Row(
-                children: [Icon(Icons.home), Text('Home')],
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality here
-              },
-              child: const Row(
-                children: [Icon(Icons.settings), Text('Settings')],
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality here
-              },
-              child: const Row(
-                children: [Icon(Icons.account_box), Text('Profile')],
-              ),
-            ),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _navigate_bottom_bar,
+        backgroundColor: Colors.purple[100],
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_box), label: 'Profile')
+        ],
       ),
-      body: Container(
-        color: Colors.purple[50],
-        child: const Center(
-          child: Text('Home Page'),
-        ),
-      ),
+      body: _pages[_selectedIndex],
     );
   }
 }

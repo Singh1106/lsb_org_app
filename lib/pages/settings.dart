@@ -5,12 +5,8 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Settings page"),
-        backgroundColor: Colors.purple[100],
-      ),
-      body: const Column(
+    return const Scaffold(
+      body: Column(
         children: [Icon(Icons.settings)],
       ),
     );
