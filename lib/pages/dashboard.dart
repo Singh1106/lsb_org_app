@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lsb_organization/theme/main.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key});
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
       body: Column(
         children: [
           Icon(
-            Icons.account_box,
+            Icons.help_center,
             size: 100,
             color: theme.accentColor,
           )

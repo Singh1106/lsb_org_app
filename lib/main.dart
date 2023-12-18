@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lsb_organization/pages/home.dart';
 import 'package:lsb_organization/pages/login.dart';
 import 'package:lsb_organization/pages/otp.dart';
-import 'package:lsb_organization/pages/profile.dart';
 import 'package:lsb_organization/pages/settings.dart';
 import 'package:lsb_organization/theme/main.dart';
 
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
           '/otp': (context) => const OtpPage(),
           '/home': (context) => const HomePage(),
           '/settings': (context) => const SettingsPage(),
-          '/profile': (context) => const ProfilePage()
           // dk why this no work
         });
   }

@@ -124,9 +124,10 @@ class ThemeSelector {
   static ThemeType getCurrentTheme() {
     // Replace this logic with your method of retrieving the selected theme flag from app memory
     // For demonstration purposes, using a hardcoded value
-    final themes = ThemeType.values;
-    final randomIndex = Random().nextInt(themes.length);
-    return themes[randomIndex];
+    // final themes = ThemeType.values;
+    // final randomIndex = Random().nextInt(themes.length);
+    // return themes[randomIndex];
+    return ThemeType.lavenderhaze;
   }
 
   static AppTheme getTheme() {

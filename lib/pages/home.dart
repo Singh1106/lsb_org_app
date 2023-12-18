@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lsb_organization/pages/analytics.dart';
+import 'package:lsb_organization/pages/customer-management.dart';
+import 'package:lsb_organization/pages/dashboard.dart';
 import 'package:lsb_organization/pages/login.dart';
-import 'package:lsb_organization/pages/profile.dart';
+import 'package:lsb_organization/pages/onboarding.dart';
 import 'package:lsb_organization/pages/settings.dart';
 import 'package:lsb_organization/theme/main.dart';
 
@@ -13,12 +16,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  final _pages = const [SettingsPage(), ProfilePage()];
+  final _pages = [
+    const DashboardPage(),
+    const OnBoardingPage(),
+    const AnalyticsPage(),
+    const CustomerManagementPage(),
+    const SettingsPage()
+  ];
 
   void _navigateBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
     });
+    // Example navigation logic:
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => _pages[index],
+    //   ),
+    // );
   }
 
   @override
@@ -73,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ProfilePage(),
+                    builder: (context) => const DashboardPage(),
                   ),
                 );
               },
@@ -98,14 +114,43 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         onTap: _navigateBottomBar,
         backgroundColor: theme.primaryColor,
+        type: BottomNavigationBarType.fixed, // This is all you need!
+
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(
+              Icons.account_box,
+              size: 24,
+            ),
+            label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: 'Profile',
+            icon: Icon(
+              Icons.abc,
+              size: 24,
+            ),
+            label: 'OnBoarding',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.g_mobiledata,
+              size: 24,
+            ),
+            label: 'Analytics',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.yard,
+              size: 24,
+            ),
+            label: 'Customer Management',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              size: 24,
+            ),
+            label: 'Settings',
           ),
         ],
       ),
