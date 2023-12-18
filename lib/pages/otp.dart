@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:lsb_organization/pages/home.dart';
+import 'package:lsb_organization/theme/main.dart';
 
 class OtpPage extends StatefulWidget {
-  const OtpPage({super.key});
+  const OtpPage({Key? key});
 
   @override
   _OtpPageState createState() => _OtpPageState();
@@ -38,10 +39,12 @@ class _OtpPageState extends State<OtpPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ThemeSelector.getTheme();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Enter OTP'),
-        backgroundColor: Colors.purple[100],
+        backgroundColor: theme.primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -55,11 +58,11 @@ class _OtpPageState extends State<OtpPage> {
                 controller: otpController,
                 keyboardType: TextInputType.number,
                 maxLength: 6,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'OTP',
                   border: OutlineInputBorder(),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: theme.formFieldFillColor,
                 ),
                 validator: (value) {
                   if (value!.isEmpty || value.length < 6) {
@@ -72,7 +75,7 @@ class _OtpPageState extends State<OtpPage> {
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: Colors.purple,
+                  backgroundColor: theme.buttonBackgroundColor,
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -80,7 +83,7 @@ class _OtpPageState extends State<OtpPage> {
                   }
                 },
                 icon: isVerifying
-                    ? const SizedBox(
+                    ? SizedBox(
                         width: 20,
                         height: 20,
                         child: CircularProgressIndicator(
