@@ -127,7 +127,7 @@ class ThemeSelector {
     // final themes = ThemeType.values;
     // final randomIndex = Random().nextInt(themes.length);
     // return themes[randomIndex];
-    return ThemeType.lavenderhaze;
+    return ThemeType.beige;
   }
 
   static AppTheme getTheme() {

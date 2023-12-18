@@ -28,13 +28,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
     });
-    // Example navigation logic:
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => _pages[index],
-    //   ),
-    // );
   }
 
   @override
