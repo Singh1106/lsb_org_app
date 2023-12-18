@@ -9,17 +9,14 @@ class ProfilePage extends StatelessWidget {
     final theme = ThemeSelector.getTheme();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        backgroundColor: theme.primaryColor,
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Icon(
-          Icons.account_box,
-          size: 100,
-          color: theme.accentColor,
-        ),
+      body: Column(
+        children: [
+          Icon(
+            Icons.account_box,
+            size: 100,
+            color: theme.accentColor,
+          )
+        ],
       ),
     );
   }

@@ -9,17 +9,14 @@ class SettingsPage extends StatelessWidget {
     final theme = ThemeSelector.getTheme();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-        backgroundColor: theme.primaryColor,
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Icon(
-          Icons.settings,
-          size: 100,
-          color: theme.accentColor,
-        ),
+      body: Column(
+        children: [
+          Icon(
+            Icons.settings,
+            size: 100,
+            color: theme.accentColor,
+          )
+        ],
       ),
     );
   }
