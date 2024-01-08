@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lsb_organization/theme/main.dart';
 
-class CustomerManagementPage extends StatelessWidget {
+class CustomerManagementPage extends HookWidget {
   const CustomerManagementPage({Key? key}) : super(key: key);
 
   @override
@@ -15,12 +16,11 @@ class CustomerManagementPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.offline_bolt,
               size: 100,
-              color: theme.accentColor,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Customer Management Overview',
               style: TextStyle(
@@ -29,7 +29,7 @@ class CustomerManagementPage extends StatelessWidget {
                 color: theme.primaryColor,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -47,7 +47,7 @@ class CustomerManagementPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Define action to navigate or perform specific customer management tasks
@@ -57,7 +57,8 @@ class CustomerManagementPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 foregroundColor: theme.primaryColor,
                 backgroundColor: theme.accentColor,
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
               ),
             ),
           ],

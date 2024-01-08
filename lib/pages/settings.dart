@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lsb_organization/theme/main.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends HookWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
@@ -31,7 +32,7 @@ class SettingsPage extends StatelessWidget {
                 // For example: Navigator.push(context, MaterialPageRoute(builder: (context) => AccountSettingsPage()));
               },
             ),
-            Divider(color: theme.accentColor),
+            const Divider(color: Colors.transparent),
             ListTile(
               leading: Icon(Icons.notifications),
               title: Text(
@@ -43,7 +44,7 @@ class SettingsPage extends StatelessWidget {
                 // For example: Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationSettingsPage()));
               },
             ),
-            Divider(color: theme.accentColor),
+            const Divider(color: Colors.transparent),
             // Add more ListTile items for different settings options
 
             // Example:

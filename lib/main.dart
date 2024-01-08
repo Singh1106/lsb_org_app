@@ -4,12 +4,13 @@ import 'package:lsb_organization/pages/login.dart';
 import 'package:lsb_organization/pages/otp.dart';
 import 'package:lsb_organization/pages/settings.dart';
 import 'package:lsb_organization/theme/main.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends HookWidget {
   const MyApp({super.key});
 
   @override

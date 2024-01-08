@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lsb_organization/theme/main.dart';
 
-class AnalyticsPage extends StatelessWidget {
+class AnalyticsPage extends HookWidget {
   const AnalyticsPage({Key? key}) : super(key: key);
 
   @override
@@ -15,12 +16,11 @@ class AnalyticsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.r_mobiledata,
               size: 100,
-              color: theme.accentColor,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Analytics Overview',
               style: TextStyle(
@@ -29,7 +29,7 @@ class AnalyticsPage extends StatelessWidget {
                 color: theme.primaryColor,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               width: double.infinity,
               height: 200,
@@ -47,7 +47,7 @@ class AnalyticsPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'View detailed reports and insights here.',
               style: TextStyle(
@@ -55,18 +55,19 @@ class AnalyticsPage extends StatelessWidget {
                 color: theme.primaryColor,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Define action to navigate to detailed analytics or reports
                 // For example: Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedAnalyticsPage()));
               },
-              child: Text('View Reports'),
               style: ElevatedButton.styleFrom(
                 foregroundColor: theme.primaryColor,
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                 backgroundColor: theme.accentColor,
               ),
+              child: const Text('View Reports'),
             ),
           ],
         ),

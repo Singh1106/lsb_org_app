@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lsb_organization/theme/main.dart';
 
-class OnBoardingPage extends StatelessWidget {
+class OnBoardingPage extends HookWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
 
   @override
@@ -24,7 +25,7 @@ class OnBoardingPage extends StatelessWidget {
                 color: theme.primaryColor,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'This is where you can onboard your organization '
               'and set up your loyalty program.',
@@ -34,13 +35,12 @@ class OnBoardingPage extends StatelessWidget {
                 color: theme.primaryColor,
               ),
             ),
-            SizedBox(height: 40),
-            Icon(
+            const SizedBox(height: 40),
+            const Icon(
               Icons.vaccines,
               size: 100,
-              color: theme.accentColor,
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
                 // Define action when the button is pressed
@@ -50,7 +50,8 @@ class OnBoardingPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 foregroundColor: theme.primaryColor,
                 backgroundColor: theme.accentColor,
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
               ),
             ),
           ],

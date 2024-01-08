@@ -1,110 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:lsb_organization/pages/otp.dart';
 import 'package:lsb_organization/theme/main.dart';
 
-// class _LoginFormState extends State<LoginFormImplementation> {
-//   final TextEditingController phoneNumberController = TextEditingController();
-//   final _formKey = GlobalKey<FormState>();
-
-//   String? selectedCountryCode;
-
-//   List<String> countryCodes = [
-//     '91',
-//     '1',
-//     '44',
-//     '81',
-//     '86'
-//   ]; // Sample country codes
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     selectedCountryCode = countryCodes[0]; // Set default country code
-//   }
-
-//   String? validatePhoneNumber(String? value) {
-//     if (value!.isEmpty) {
-//       return 'Please enter a phone number';
-//     }
-//     // Regular expression to validate phone numbers
-//     String pattern =
-//         r'^\d{7,}$'; // Custom pattern for any mobile number validation
-//     RegExp regExp = RegExp(pattern);
-//     if (!regExp.hasMatch(value)) {
-//       return 'Please enter a valid phone number';
-//     }
-//     return null;
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Form(
-//       key: _formKey,
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         crossAxisAlignment: CrossAxisAlignment.stretch,
-//         children: <Widget>[
-//           DropdownButtonFormField<String>(
-//             value: selectedCountryCode,
-//             onChanged: (String? value) {
-//               setState(() {
-//                 selectedCountryCode = value;
-//               });
-//             },
-//             items: countryCodes.map((String code) {
-//               return DropdownMenuItem<String>(
-//                 value: code,
-//                 child: Text(code),
-//               );
-//             }).toList(),
-//             decoration: const InputDecoration(
-//               labelText: 'Country Code',
-//               border: OutlineInputBorder(),
-//               filled: true,
-//               fillColor: Colors.white,
-//             ),
-//           ),
-//           const SizedBox(height: 16.0),
-//           TextFormField(
-//             controller: phoneNumberController,
-//             keyboardType: TextInputType.phone,
-//             decoration: const InputDecoration(
-//               labelText: 'Phone Number',
-//               border: OutlineInputBorder(),
-//               filled: true,
-//               fillColor: Colors.white,
-//             ),
-//             validator: validatePhoneNumber,
-//           ),
-//           const SizedBox(height: 24.0),
-//           ElevatedButton(
-//             style: ElevatedButton.styleFrom(
-//               foregroundColor: Colors.white,
-//               backgroundColor: Colors.purple,
-//             ),
-//             onPressed: () {
-//               if (_formKey.currentState!.validate()) {
-//                 // Navigate to the OTP filling page
-//                 Navigator.push(
-//                   context,
-//                   MaterialPageRoute(
-//                     builder: (context) => const OtpPage(),
-//                   ),
-//                 );
-//               }
-//             },
-//             child: const Text('Send OTP'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key});
+class LoginPage extends HookWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -113,77 +13,54 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('LSB Portal'),
-        backgroundColor: theme.primaryColor, // Use primary color from theme
+        backgroundColor: theme.primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child:
-            LoginFormImplementation(theme: theme), // Pass the theme to the form
+        child: LoginFormImplementation(theme: theme),
       ),
     );
   }
 }
 
-class LoginFormImplementation extends StatefulWidget {
+class LoginFormImplementation extends HookWidget {
   final AppTheme theme;
 
-  const LoginFormImplementation({Key? key, required this.theme});
-
-  @override
-  _LoginFormState createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginFormImplementation> {
-  // Existing code..
-  final TextEditingController phoneNumberController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
-  String? selectedCountryCode;
-
-  List<String> countryCodes = [
-    '91',
-    '1',
-    '44',
-    '81',
-    '86'
-  ]; // Sample country codes
-
-  @override
-  void initState() {
-    super.initState();
-    selectedCountryCode = countryCodes[0]; // Set default country code
-  }
-
-  String? validatePhoneNumber(String? value) {
-    if (value!.isEmpty) {
-      return 'Please enter a phone number';
-    }
-    // Regular expression to validate phone numbers
-    String pattern =
-        r'^\d{7,}$'; // Custom pattern for any mobile number validation
-    RegExp regExp = RegExp(pattern);
-    if (!regExp.hasMatch(value)) {
-      return 'Please enter a valid phone number';
-    }
-    return null;
-  }
+  const LoginFormImplementation({Key? key, required this.theme})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final selectedCountryCode = useState<String>('91');
+    final phoneNumberController = useTextEditingController();
+    final formKey = useMemoized(() => GlobalKey<FormState>());
+
+    String? validatePhoneNumber(String? value) {
+      if (value!.isEmpty) {
+        return 'Please enter a phone number';
+      }
+      // Regular expression to validate phone numbers
+      String pattern =
+          r'^\d{7,}$'; // Custom pattern for any mobile number validation
+      RegExp regExp = RegExp(pattern);
+      if (!regExp.hasMatch(value)) {
+        return 'Please enter a valid phone number';
+      }
+      return null;
+    }
+
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           DropdownButtonFormField<String>(
-            value: selectedCountryCode,
+            value: selectedCountryCode.value,
             onChanged: (String? value) {
-              setState(() {
-                selectedCountryCode = value;
-              });
+              selectedCountryCode.value = value!;
             },
-            items: countryCodes.map((String code) {
+            items: ['91', '1', '44', '81', '86'].map((String code) {
               return DropdownMenuItem<String>(
                 value: code,
                 child: Text(code),
@@ -191,32 +68,30 @@ class _LoginFormState extends State<LoginFormImplementation> {
             }).toList(),
             decoration: InputDecoration(
               labelText: 'Country Code',
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               filled: true,
-              fillColor: widget.theme.formFieldFillColor, // Use theme color
+              fillColor: theme.formFieldFillColor,
             ),
           ),
           const SizedBox(height: 16.0),
           TextFormField(
-            // Existing code...
+            controller: phoneNumberController,
             decoration: InputDecoration(
               labelText: 'Phone Number',
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               filled: true,
-              fillColor: widget.theme.formFieldFillColor, // Use theme color
+              fillColor: theme.formFieldFillColor,
             ),
             validator: validatePhoneNumber,
           ),
           const SizedBox(height: 24.0),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              foregroundColor: widget.theme.buttonTextColor, // Use theme color
-              backgroundColor:
-                  widget.theme.buttonBackgroundColor, // Use theme color
+              foregroundColor: theme.buttonTextColor,
+              backgroundColor: theme.buttonBackgroundColor,
             ),
             onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // Navigate to the OTP filling page
+              if (formKey.currentState!.validate()) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
