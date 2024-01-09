@@ -11,6 +11,7 @@ import 'package:lsb_organization/theme/offwhite.dart';
 import 'package:lsb_organization/theme/peachyglow.dart';
 import 'package:lsb_organization/theme/pearlessence.dart';
 import 'package:lsb_organization/theme/purple.dart';
+import 'package:lsb_organization/theme/vibrantgrayscale.dart';
 
 class AppTheme {
   late String _name;
@@ -117,6 +118,7 @@ enum ThemeType {
   lavenderhaze,
   peachyglow,
   mintyfrezh,
+  vibrantgrayscale
   // Add more theme types if needed
 }
 
@@ -127,7 +129,7 @@ class ThemeSelector {
     // final themes = ThemeType.values;
     // final randomIndex = Random().nextInt(themes.length);
     // return themes[randomIndex];
-    return ThemeType.oceanbreeze;
+    return ThemeType.vibrantgrayscale;
   }
 
   static AppTheme getTheme() {
@@ -154,6 +156,8 @@ class ThemeSelector {
         return PeachyGlowTheme.theme;
       case ThemeType.mintyfrezh:
         return MintyFreshTheme.theme;
+      case ThemeType.vibrantgrayscale:
+        return VibrantGrayscaleTheme.theme;
     }
   }
 }
